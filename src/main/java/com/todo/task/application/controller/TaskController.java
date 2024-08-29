@@ -42,20 +42,26 @@ public class TaskController {
     public ResponseEntity create(@RequestBody TaskInput reqBody){
         Task newTasks = new Task();
 
-        newTasks.setTitle(reqBody.getTitle());
-        newTasks.setDescription(reqBody.getDescription());
-        newTasks.setStatus(reqBody.getStatus());
+        String msgBody = "Success create task";
+        if (reqBody.getTitle().isEmpty()){
+            msgBody = "Error, please input field title";
+        }else if (reqBody.getDescription().isEmpty()){
+            msgBody = "Error, please input field description";
+        }else{
+            newTasks.setTitle(reqBody.getTitle());
+            newTasks.setDescription(reqBody.getDescription());
+            newTasks.setStatus(reqBody.getStatus());
 
-        taskRepository.save(newTasks);
+            taskRepository.save(newTasks);
+        }
 
-        return ResponseEntity.ok("success create task");
+        return ResponseEntity.ok(msgBody);
+
     }
 
     //[PUT] /tasks : update data task list by id
     @PutMapping
     public ResponseEntity update(@RequestBody TaskInput reqBody){
-        Task newTask = new Task();
-
         Task todoById = taskRepository.findTaskById(reqBody.getId());
 
         todoById.setTitle(reqBody.getTitle());
@@ -63,6 +69,12 @@ public class TaskController {
         todoById.setStatus(reqBody.getStatus());
 
         String msgBody = "Error, data not found!!";
+        if (reqBody.getTitle().isEmpty()){
+            msgBody = "Error, please input field title";
+        }else if (reqBody.getDescription().isEmpty()){
+            msgBody = "Error, please input field description";
+        }
+
         if (todoById.getId() != 0) {
             taskRepository.save(todoById);
             msgBody = "success update task";
