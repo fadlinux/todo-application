@@ -58,7 +58,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"title\" : \"ok\",\n    \"description\" : \"oket\",\n    \"status\" : \"yes\"\n}",
+					"raw": "{\n    \"title\" : \"create title\",\n    \"description\" : \"create description\",\n    \"status\" : \"yes\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -86,7 +86,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "",
+					"raw": "{   \n    \"id\" : 1,\n    \"title\" : \"update title\",\n    \"description\" : \"update description\",\n    \"status\" : \"update status\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -113,14 +113,15 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/tasks?id=1",
+					"raw": "http://localhost:8080/tasks/id?id=1",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"tasks"
+						"tasks",
+						"id"
 					],
 					"query": [
 						{
