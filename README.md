@@ -5,7 +5,7 @@ Demo Todo Tasks Application
 - java 22.0.2 
 - gradle
 - mysql version 8
-- Database migration tools with java spring-jpa hibernate
+- Database migration tools with liquibase
 
 ## Preparation
 - create database name 'todo_db'
